@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    {# This is the base template for the site–other templates extend this one #}
+    
+    <meta name="google-site-verification" content="sjFqwkrllOKJ06reKg2RM4zwgAT8GQDqJjII7291rt8" />
+    
+    <!-- Google tag (gtag.js) -->
+    {% if env.isProd %}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2K8ED7PGQM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2K8ED7PGQM');
+</script>
+    {% endif %}
+    
+    <meta charset="utf-8" />
+    <link rel="icon" href="https://glitch.com/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Your new 11ty blog" />
+    <link rel="stylesheet" type="text/css" href="/public/style.css" />
+    {% seo "" %}
+    
+    <script>
+if (location.protocol != 'https:') {
+ location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+}
+</script>
+    
+    <meta name="twitter:image" content="https://html.sammy-codes.com/images/large-profile.jpg" />
+    
+  </head>
+  <body>
+  <main>
+    
+    {# Page or post content will appear here #}
+  
+    {{ content | safe }}
+    
+
+      <footer class="footer">
+        <div class="links">
+          <a href="/">Home</a>
+          <span class="divider">|</span>
+          <a href="/posts">Posts</a>
+          <span class="divider">|</span>
+          <a href="/about">About</a>
+        </div>
+      </footer>
+    
+  </main>
+   
+  </body>
+</html>

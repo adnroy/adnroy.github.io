@@ -1,0 +1,42 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-home
+---
+
+{# This is the template for individual blog posts–it builds the front matter properties into the page #}
+
+<div class="wrapper post">
+    <div class="illo-container">
+  <img src="https://cdn.glitch.global/c21e37cb-bd21-49a9-9d7e-a38d52cb09e0/p-cardinalis.png?v=1669573117734" class="illustration" style="align: right" alt="Jumping Spider">
+</div>
+  <h1>
+    <a href="/">Adam's Cool Website</a>
+  </h1>
+  <div>
+    {# The post front matter includes the title property #}
+    <h2 class="postTitle">{{title}}</h2>
+
+<p>
+  <em>{{description}}</em>
+</p>
+    <br />
+    
+    {# Content from the body of the post markdown appears here #}
+    {{ content | safe }}
+    <div class="controls">
+    {# The previous and next post data is added in .eleventy.js #}
+    {% if prevPost.url %}
+      <p>
+        <strong>Previous post</strong>: 
+        <a class="previous" href="{{ prevPost.url }}">{{ prevPost.data.title }}</a>
+      </p>
+    {% endif %}
+    {% if nextPost.url %}
+      <p>
+        <strong>Next post</strong>: 
+        <a class="next" href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+      </p>
+    {% endif %}
+    </div>
+  </div>
+</div>

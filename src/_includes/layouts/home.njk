@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-home
+---
+
+{# The Home page uses this template–it extends the base template #}
+
+<div class="wrapper home">
+  <div class="content">
+    {{ content | safe }}
+    
+    {# After the the content defined in index.md, list the blog posts in the collection #}
+    <ul>
+      {%- for post in collections.posts | reverse -%}
+        <li{% if page.url == post.url %} aria-current="page"{% endif %}>{{ post.data.page.date | htmlDateString }} — <a href='{{ post.url }}'>{{ post.data.title }}</a></li>
+      {%- endfor -%}
+      <li><a href="/posts">View all posts</a></li>
+    </ul>
+  </div>
+</div>
+
+   {%- set latest = collections.posts | last -%}
+    
+    <script>document.getElementById("hero").src="{{ latest.data.hero }}";
+      
+      document.getElementById("herolink").href="{{ latest.data.url }}";
+      
+     document.getElementById("herotext").innerHTML="<a href='{{ latest.data.url }}'>Latest Post: {{ latest.data.title }}</a>";
+   
+    </script>
+
+
